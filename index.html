@@ -1,77 +1,450 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta charset='utf-8'>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Presentation</title>
 
-  <title>max-l/scala-introduction @ GitHub</title>
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #34ef7a;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #cb1085; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #cb1085; }
-    h3 { text-align: center; color: #cb1085; }
-    a { color: #cb1085; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/stylesheet.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
 </head>
 
 <body>
-  <a href="http://github.com/max-l/scala-introduction"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/max-l/scala-introduction/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/max-l/scala-introduction/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
-
-    <h1><a href="http://github.com/max-l/scala-introduction">scala-introduction</a>
-      <span class="small">by <a href="http://github.com/max-l">max-l</a></span></h1>
-
-    <div class="description">
-      
-    </div>
-
-    <h2>Authors</h2>
-<p>Maxime Levesque (maxime.levesque@gmail.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Maxime Lévesque (maxime.levesque@gmail.com)<br/>      </p>
 
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/max-l/scala-introduction/zipball/master">zip</a> or
-      <a href="http://github.com/max-l/scala-introduction/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/max-l/scala-introduction</pre>
-    </p>
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/max-l/scala-introduction">max-l/scala-introduction</a>
-    </div>
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
 
-  </div>
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
 
-  
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content smbullets" ref="intro/01_intro/1">
+<h1>Scala</h1>
+
+<h2>a Scalable Language</h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/2">
+<h1>2006</h1>
+
+<h1>Dynamic Languages Peak in popularity</h1>
+
+<h2>Ruby, Groovy, Python, PHP</h2>
+
+<h2>High expressivity / Low verbosity</h2>
+
+<h2>Write less code, less time to code</h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/3">
+<h1><em>BUT</em></h1>
+
+<h1>Absence of compilation means</h1>
+
+<h2>Code time savings are offset by more time spent debugging !</h2>
+
+<h2>Hard to refactor</h2>
+
+<h2>Need to write test cases to ensure basic sanity (...like type abuse !)</h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/4">
+<h1>Can we have it both ways ?</h1>
+
+<h2>Low verbosity <em>and</em> High compile time validation</h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/5">
+<h1>Scala</h1>
+
+<h2>Almost as succinct as a dynamic language</h2>
+
+<h2>With a powerfull type system that incurs low conceptual overhead (*)</h2>
+
+<pre class="sh_Scala"><code>class Person(name: String, age: Int)
+
+val crowd = ...
+
+val (children, adults) = crowd.partition(_.age &lt; 18)</code></pre>
+
+<!-- //## (*) for library users -->
+</div>
+</div><div class="slide" data-transition="none"><div class="content smbullets small" ref="features/01_tuple">
+<h1>Tuples</h1>
+
+<pre class="sh_Scala"><code>
+val things  = (3, "hello world", new Date)
+
+println(things._1 + " times 5 is " + things._1 * 5)
+println(things._2.toUpperCase)
+println("Now : " + things._3)
+
+class Rectangle(val x: Float, val y: Float) {
+  def coordinate = (x,y)
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets small" ref="features/02_closures/1">
+<h1>Closures</h1>
+
+<h2>A powerfull mechanism for code reuse, ...from the 50s</h2>
+
+<pre class="sh_Scala"><code>class Person(val name: val String, age: Int)
+
+val ageSum  = crowd.map(_.age).sum
+// lets not deal with div by 0 for now....
+val ageAvg = ageSum / crowd.size 
+val belowAvgAge  = 
+  crowd.filter(_.age &lt; avgAge)
+
+val ageGroups = crowd.groupBy(_.age)
+
+//the type of ageGroups is : Map[Int,Iterable[Person]]</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets small" ref="features/02_closures/2">
+<h1>More closures</h1>
+
+<pre class="sh_Scala"><code>val ageGroups = crowd.groupBy(_.age)
+
+println("Age distribution :")
+
+ageGroups //ageGroup is a Map[Int,Iterable[Person]]
+.map((age,group)=&gt;(age,group.size)) //now a Map[Int,Int]    
+.toSeq
+.sortBy(_._1)
+.foreach(println(_._1 + " : " + _._2))
+
+//What if we did .map((age,group) =&gt; age) instead ?</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="features/03_option/1">
+<h1>Nullability exposed to the type system</h1>
+
+<h2>I call it my billion-dollar mistake. It was the invention of the null reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W).I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement.</h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/03_option/2">
+<h1>Nullability exposed to the type system</h1>
+
+<h2>Option[A] vs null</h2>
+
+<pre class="sh_Scala"><code>//for starters, Option[A] is self documenting
+class Person(val name: String, val age: Option[Int])
+
+// Will not compile :
+val avgAge  = crowd.map(_.age).sum
+//error: could not find implicit value for parameter num: Numeric[Option[Int]]
+//val avgAge  = crowd.map(_.age).sum
+
+// you are forced to deal with null, or 'unknown' values
+crowd.map(_.age.getOrElse(0)).sum
+
+//another way to deal with 'unknowns' :
+crowd.filter(_ != None).map(_.age.get).sum
+
+trait Map[K,V] {
+  def get(k: K): Option[V]
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/04_diy_control">
+<h1>DIY control structures</h1>
+
+<pre class="sh_Scala"><code>object TxUtils {
+  def transaction[A](a: =&gt;A) = {
+    val c = createConnection
+    try {
+      val r = a
+      c.commit
+      r
+    }
+    catch {
+      case e:Exception =&gt; {
+        c.rollback
+        throw e
+      }
+    }
+  }
+}
+
+import TxUtils._
+val result = transaction { 
+  //db code here...
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/05_traits">
+<h1>Traits and Mixins</h1>
+
+<h2>Dependency injection with static validation</h2>
+
+<pre class="sh_Scala"><code>
+trait KeyedEntity[K] {
+
+  def id: K
+}
+
+trait Optimistic {
+  self: KeyedEntity[_] =&gt;
+
+  protected val occVersionNumber = 0
+}
+
+class Book(val id: Long, title: String)
+  extends KeyedEntity[Long] with Optimistic</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets incremental" ref="features/06_dsls/1">
+<h1>DSLs</h1>
+
+<h2>Domain Specific Languages</h2>
+
+<ul>
+<li>Domain experts know all about the what</li>
+<li>Programmers know about the how</li>
+<li>What if a Domain expert could understand the code ?</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/06_dsls/2">
+<h2>A Java DSL for physics</h2>
+
+<pre class="sh_Java"><code>Speed s = 
+  new Speed(
+    new Distance(5.3, DistanceUnits.KM), 
+    new Time(15, TimeUnits.MINUTES).minus(
+     new Time(5, TimeUnits.SECONDS))
+  )</code></pre>
+
+<h2>We could do a little better</h2>
+
+<pre class="sh_Java"><code>class TurboInfraRetroMagnetor extends Units {
+//...   
+  Speed s = 
+    speed(
+      kms(5.3), 
+      minutes(15).minus(seconds(5))
+    )</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/06_dsls/3">
+<h2>The same DSL in Scala</h2>
+
+<pre class="sh_Scala"><code>
+import DSL._
+
+val vitesse = 5.3.km / (15.minutes - 5.seconds)  </code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/06_dsls/4">
+<h2>Under the Hood : Implicit conversions and a bit of syntactic sugar</h2>
+
+<pre class="sh_Scala"><code>object DSL {
+ implicit def int2Time(i: Int) = new TimeUnit(i)
+ implicit def float2Distance(f: float) = new Distance(f)
+
+ class TimeUnit(val milliseconds: Long) {
+   def seconds(i: Int) = new TimeUnit(i * 1000)
+   def minutes(i: Int) = new TimeUnit(i * 1000 * 60)
+   def -(t: TimeUnit) = 
+     new TimeUnit(this.milisseconds = t.milliseconds)
+ }
+ class Speed(val d: Distance, val t: TimeUnit)
+ class Distance(val millimeters: Float) {
+   def km(f: Float) = new Distance(f * 1000^2)
+   def / (t: TimeUnit) = new Speed(d, t)
+ }
+}
+
+import DSL._
+
+val vitesse = 5.3.km / (15.minutes - 5.seconds)  </code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content xml_swamp" ref="features/06_dsls/5">
+<h1>Maven, an XML DSL</h1>
+
+<pre class="sh_XML"><code>&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;emb&lt;/groupId&gt;
+  &lt;artifactId&gt;emb&lt;/artifactId&gt;
+  &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+   &lt;properties&gt;
+       &lt;jetty.version&gt;7.3.0.v20110203&lt;/jetty.version&gt;
+       &lt;bayeux.version&gt;2.1.1&lt;/bayeux.version&gt;
+   &lt;/properties&gt;
+   &lt;repositories&gt;
+       &lt;repository&gt;
+           &lt;id&gt;repo2_maven_org&lt;/id&gt;
+           &lt;url&gt;http://repo2.maven.org/maven2&lt;/url&gt;
+       &lt;/repository&gt;
+   &lt;/repositories&gt;
+   &lt;dependencies&gt;
+       &lt;dependency&gt;
+           &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+           &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;
+           &lt;version&gt;${jetty.version}&lt;/version&gt;
+       &lt;/dependency&gt;
+       &lt;dependency&gt;
+           &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+           &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;
+           &lt;version&gt;${jetty.version}&lt;/version&gt;
+       &lt;/dependency&gt;
+       &lt;dependency&gt;
+           &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;
+           &lt;artifactId&gt;jetty-servlet&lt;/artifactId&gt;
+           &lt;version&gt;${jetty.version}&lt;/version&gt;
+       &lt;/dependency&gt;           
+       &lt;!-- Bayeux Jars --&gt;
+       &lt;dependency&gt;
+            &lt;groupId&gt;org.cometd.java&lt;/groupId&gt;
+            &lt;artifactId&gt;cometd-java-server&lt;/artifactId&gt;
+            &lt;version&gt;${bayeux.version}&lt;/version&gt;
+        &lt;/dependency&gt;          
+       &lt;dependency&gt;
+            &lt;groupId&gt;org.cometd.java&lt;/groupId&gt;
+            &lt;artifactId&gt;cometd-java-common&lt;/artifactId&gt;
+            &lt;version&gt;${bayeux.version}&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.cometd.java&lt;/groupId&gt;
+            &lt;artifactId&gt;bayeux-api&lt;/artifactId&gt;
+            &lt;version&gt;${bayeux.version}&lt;/version&gt;
+        &lt;/dependency&gt;       
+   &lt;/dependencies&gt;    
+&lt;/project&gt;  </code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content xml_swamp small" ref="features/06_dsls/6">
+<h1>SBT (Simple Build Tool)</h1>
+
+<h2>A Scala DSL for dependency management and build</h2>
+
+<pre class="sh_Scala"><code>import sbt._
+
+class SquerylProject(info: ProjectInfo) extends DefaultProject(info) {
+
+  override def managedStyle = ManagedStyle.Maven
+
+  val publishTo = "Scala Tools Nexus" at "file://nexus.scala-tools.org/content/repositories/releases/"
+
+  override def packageSrcJar = defaultJarPath("-sources.jar")
+
+  val sourceArtifact = Artifact.sources(artifactID)
+
+  override def packageToPublishActions = super.packageToPublishActions ++ Seq(packageSrc)
+
+  Credentials(Path.userHome / ".ivy2" / ".credentials", log)
+
+  override def pomExtra =
+    &lt;licenses&gt;
+      &lt;license&gt;
+      &lt;name&gt;Apache 2&lt;/name&gt;
+      &lt;url&gt;http://www.apache.org/licenses/LICENSE-2.0.txt&lt;/url&gt;
+      &lt;distribution&gt;repo&lt;/distribution&gt;
+      &lt;/license&gt;
+    &lt;/licenses&gt;
+
+  /**
+   * CGLIB is Squeryl's only dependency
+   */
+
+  val cglib = "cglib" % "cglib-nodep" % "2.2"
+
+  /**
+   * The following jars are for running the automated tests
+   */
+
+  val h2 = "com.h2database" % "h2" % "1.2.127" % "provided"
+  val mysqlDriver = "mysql" % "mysql-connector-java" % "5.1.10" % "provided"
+  val posgresDriver = "postgresql" % "postgresql" % "8.4-701.jdbc4" % "provided"
+  val msSqlDriver = "net.sourceforge.jtds" % "jtds" % "1.2.4" % "provided"
+  val derbyDriver = "org.apache.derby" % "derby" % "10.7.1.1" % "provided"
+  val snapshotsRepo = "snapshots-repo" at "http://www.scala-tools.org/repo-snapshots"
+  val junit = "junit" % "junit" % "4.8.2" % "provided"
+  val scalatest = "org.scalatest" % "scalatest" % "1.3" % "provided"
+
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/07_xml">
+<h1>Built in XML support</h1>
+
+<pre class="sh_Scala"><code>class XmlSample {
+
+  def allo(s: String) = &lt;p&gt;
+    &lt;i&gt;{s}&lt;/i&gt;
+  &lt;/p&gt;
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/1">
+<h1>Lazyness</h1>
+
+<pre class="sh_Scala"><code>
+class HugeObject(val hugeString: String) {
+
+  lazy val md5 = 
+    MD5.compute(hugeString)
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/2">
+<h1>Lazyness</h1>
+
+<pre class="sh_Scala"><code>
+object Logger {
+
+  var logLevel: LogLevel
+
+  protected def doLog(msg: String) = {...}
+
+  def logDebug(msg:  =&gt;String) = 
+    if(logLevel &gt; LogLevel.Debug)
+      doLog(msg())
+}
+
+// What's wrong with this : 
+logDebug(" : " + loadHugeChunkOfContextualInfo().toString + 
+         ", " + moreContextualInfo)
+// ?</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets" ref="conclusion/01_conclusion/1">
+<h1>Who uses Scala ?</h1>
+
+<h2>Linked/In</h2>
+
+<h2>Twitter</h2>
+
+<h2>EDF Trading</h2>
+
+<h2>Siemens</h2>
+
+<h2>Xebia</h2>
+
+<h2>FourSquare</h2></div>
+</div><div class="slide" data-transition="none"><div class="content smbullets" ref="conclusion/01_conclusion/2">
+<h1>Scala</h1></div>
+</div>
+</div>
+
 </body>
 </html>
