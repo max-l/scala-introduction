@@ -89,45 +89,65 @@
 </div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/3">
 <h1><em>BUT</em></h1>
 
-<h1>Absence of compilation means</h1>
+<h2>No compilation means</h2>
+
+<h1><em>No type checking</em> !</h1></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/4">
+<h1>... No type checking means</h1>
 
 <h2>Code time savings are offset by more time spent debugging !</h2>
 
 <h2>Hard to refactor</h2>
 
 <h2>Need to write test cases to ensure basic sanity (...like type abuse !)</h2></div>
-</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/4">
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/5">
 <h1>Can we have it both ways ?</h1>
 
-<h2>Low verbosity <em>and</em> High compile time validation</h2></div>
-</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/5">
+<h2>Low verbosity <em>and</em> High compile time validation ?</h2></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/6">
+<pre class="sh_Scala"><code>object HelloWorld {
+
+  val hello = "Hello"
+
+  def world = "World"
+
+  def say(msg: String) = println(msg)
+
+  def main(args: Array[String]) = {
+     say(hello + " " + world)
+  }
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/7">
+<h1>Java</h1>
+
+<pre class="sh_Java"><code>public class Person {
+  private String name;
+  private Int age;
+  public Person(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+  public Int getAge() {return age;}
+  public void setAge(int age) {this.age = age}
+  public Int getName() {return name;}
+  public void setName(String name) {this.name = name}
+}</code></pre>
+
+<h1>Scala</h1>
+
+<pre class="sh_Scala"><code>class Person(var name: String, var age: Int)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="intro/01_intro/8">
 <h1>Scala</h1>
 
 <h2>Almost as succinct as a dynamic language</h2>
 
-<h2>With a powerfull type system that incurs low conceptual overhead (*)</h2>
+<h2>With a powerfull type system</h2>
 
 <pre class="sh_Scala"><code>class Person(name: String, age: Int)
 
 val crowd = ...
 
-val (children, adults) = crowd.partition(_.age &lt; 18)</code></pre>
-
-<!-- //## (*) for library users -->
-</div>
-</div><div class="slide" data-transition="none"><div class="content smbullets small" ref="features/01_tuple">
-<h1>Tuples</h1>
-
-<pre class="sh_Scala"><code>
-val things  = (3, "hello world", new Date)
-
-println(things._1 + " times 5 is " + things._1 * 5)
-println(things._2.toUpperCase)
-println("Now : " + things._3)
-
-class Rectangle(val x: Float, val y: Float) {
-  def coordinate = (x,y)
-}</code></pre></div>
+val (children, adults) = crowd.partition(_.age &lt; 18)</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content smbullets small" ref="features/02_closures/1">
 <h1>Closures</h1>
 
@@ -161,14 +181,31 @@ ageGroups //ageGroup is a Map[Int,Iterable[Person]]
 </div><div class="slide" data-transition="none"><div class="content" ref="features/03_option/1">
 <h1>Nullability exposed to the type system</h1>
 
-<h2>I call it my billion-dollar mistake. It was the invention of the null reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W).I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement.</h2></div>
-</div><div class="slide" data-transition="none"><div class="content small" ref="features/03_option/2">
-<h1>Nullability exposed to the type system</h1>
+<h3>I call it my billion-dollar mistake. It was the invention of the null reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W).I couldn't resist the temptation to put in a null reference, simply because it was so easy to implement.</h3>
 
-<h2>Option[A] vs null</h2>
+<h3>This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.</h3>
+
+<h3>More recent programming languages like Spec# have introduced declarations for non-null references. This is the solution, which I rejected in 1965.</h3>
+
+<h3><em>Tony Hoare</em></h3></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/03_option/2">
+<h1>Option[A]</h1>
+
+<h2>a type safe alternative to null</h2>
 
 <pre class="sh_Scala"><code>//for starters, Option[A] is self documenting
 class Person(val name: String, val age: Option[Int])
+
+val p = List(
+ new Person("Xiao",Some(45)), 
+ new new Person("Zong", None)
+)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/03_option/3">
+<pre class="sh_Scala"><code>
+val crowd = List(
+ new Person("Xiao",Some(45)), 
+ new new Person("Zong", None)
+)
 
 // Will not compile :
 val avgAge  = crowd.map(_.age).sum
@@ -179,12 +216,24 @@ val avgAge  = crowd.map(_.age).sum
 crowd.map(_.age.getOrElse(0)).sum
 
 //another way to deal with 'unknowns' :
-crowd.filter(_ != None).map(_.age.get).sum
+crowd.filter(_ != None).map(_.age.get).sum</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/03_option/4">
+<h2>scala.collection.Map</h2>
 
-trait Map[K,V] {
+<pre class="sh_Scala"><code>trait Map[K,V] {
+  ...
   def get(k: K): Option[V]
+  ...
+}</code></pre>
+
+<h2>java.util.Map</h2>
+
+<pre class="sh_Java"><code>public interface Map&lt;K,V&gt; {
+  ...
+  public V get(k: K);
+  ...
 }</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content small" ref="features/04_diy_control">
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/04_diy_control/1">
 <h1>DIY control structures</h1>
 
 <pre class="sh_Scala"><code>object TxUtils {
@@ -196,10 +245,7 @@ trait Map[K,V] {
       r
     }
     catch {
-      case e:Exception =&gt; {
-        c.rollback
-        throw e
-      }
+      case e:Exception =&gt; {c.rollback; throw e}
     }
   }
 }
@@ -208,6 +254,34 @@ import TxUtils._
 val result = transaction { 
   //db code here...
 }</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/04_diy_control/2">
+<h1>Another DIY control structure</h1>
+
+<h2>Suppose Scala did not have a "do while" loop</h2>
+
+<pre class="sh_Scala"><code>
+class DoWhile(wBlock: ()=&gt;Unit) {
+  def While(condition: =&gt;Boolean) {
+    wBlock()
+    val c = condition _
+    while(c())
+      wBlock()
+  }
+}
+
+object MyDoWhile {
+  def Do(wBlock: =&gt;Unit) =    
+    new DoWhile(wBlock _)
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/04_diy_control/3">
+<pre class="sh_Scala"><code>
+import MyDoWhile._
+
+var i = 0
+Do {
+  println(i);
+  i = i + 1
+} While(i &lt; 10)</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content small" ref="features/05_traits">
 <h1>Traits and Mixins</h1>
 
@@ -347,11 +421,26 @@ val vitesse = 5.3.km / (15.minutes - 5.seconds)  </code></pre></div>
 
 <pre class="sh_Scala"><code>import sbt._
 
+
 class SquerylProject(info: ProjectInfo) extends DefaultProject(info) {
 
-  override def managedStyle = ManagedStyle.Maven
+  val snapshot = systemOptional("snapshot", false).value
 
-  val publishTo = "Scala Tools Nexus" at "file://nexus.scala-tools.org/content/repositories/releases/"
+  override def version = {
+    super.version match{
+      case BasicVersion(major, minor, micro, extra) if snapshot =&gt;
+        BasicVersion(major, minor, micro, Some("SNAPSHOT"))
+      case other =&gt; other
+    }
+  }
+
+  val publishTo = 
+    if(snapshot)
+      "Scala Tools Snapshots" at "http://nexus.scala-tools.org/content/repositories/snapshots/"
+    else
+      "Scala Tools Release" at "http://nexus.scala-tools.org/content/repositories/releases/"
+
+  override def managedStyle = ManagedStyle.Maven
 
   override def packageSrcJar = defaultJarPath("-sources.jar")
 
@@ -370,24 +459,22 @@ class SquerylProject(info: ProjectInfo) extends DefaultProject(info) {
       &lt;/license&gt;
     &lt;/licenses&gt;
 
-  /**
-   * CGLIB is Squeryl's only dependency
-   */
-
   val cglib = "cglib" % "cglib-nodep" % "2.2"
 
-  /**
-   * The following jars are for running the automated tests
-   */
-
-  val h2 = "com.h2database" % "h2" % "1.2.127" % "provided"
+  // The following jars are for running the automated tests   
+  val junit = "junit" % "junit" % "4.8.2" % "provided"
+  val h2 = "com.h2database" % "h2" % "1.2.127" % "provided"  
   val mysqlDriver = "mysql" % "mysql-connector-java" % "5.1.10" % "provided"
   val posgresDriver = "postgresql" % "postgresql" % "8.4-701.jdbc4" % "provided"
   val msSqlDriver = "net.sourceforge.jtds" % "jtds" % "1.2.4" % "provided"
   val derbyDriver = "org.apache.derby" % "derby" % "10.7.1.1" % "provided"
-  val snapshotsRepo = "snapshots-repo" at "http://www.scala-tools.org/repo-snapshots"
-  val junit = "junit" % "junit" % "4.8.2" % "provided"
-  val scalatest = "org.scalatest" % "scalatest" % "1.3" % "provided"
+  val snapshotsRepo = "snapshots-repo" at "http://www.scala-tools.org/repo-snapshots"             
+
+  val scalatest = 
+    if(!crossScalaVersionString.startsWith("2.8")) 
+      "org.scalatest" %% "scalatest" % "1.4.1" % "provided"
+    else
+      "org.scalatest" % "scalatest_2.8.0" % "1.3.1.RC2" % "provided"
 
 }</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content small" ref="features/07_xml">
@@ -402,47 +489,112 @@ class SquerylProject(info: ProjectInfo) extends DefaultProject(info) {
 </div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/1">
 <h1>Lazyness</h1>
 
-<pre class="sh_Scala"><code>
-class HugeObject(val hugeString: String) {
+<h2>The Java way</h2>
 
-  lazy val md5 = 
-    MD5.compute(hugeString)
+<pre class="sh_Java"><code>public class HugeObjectJava {     
+  private String hugeString;      
+  private String _md5;      
+  public HugeObjectJava(String s) {this.hugeString = s;}
+  public String md5() {
+    synchronized {
+      if(_md5 == null) {
+        _md5 = MD5.compute(hugeString)
+      }
+    }
+    return _md5;
+  }
 }</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/2">
 <h1>Lazyness</h1>
 
+<h2>Scala works hard to be lazy</h2>
+
+<pre class="sh_Scala"><code>class HugeObjectScala(val hugeString: String) {   
+  lazy val md5 = MD5.compute(hugeString)
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/3">
+<h2>In reality, Java's verbosity is much worse if you want to implement a "lazy val"</h2>
+
+<pre class="sh_Java"><code>public class HugeObjectJava {     
+  private String hugeString;      
+  private volatile String _md5;     
+  public HugeObjectJava(String s) {this.hugeString = s;}
+  public String md5() {
+    if(_md5 == null) {
+      synchronized {
+        if(_md5 == null) {
+          _md5 = MD5.compute(hugeString)
+        }
+      }
+      return _md5;
+    }
+    return _md5;
+  }
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/4">
+<h1>More Lazyness</h1>
+
+<h2>What's wrong with this ?</h2>
+
 <pre class="sh_Scala"><code>
-object Logger {
+def doSomething = {
+   doOneThing(1)
+   logDebug("While doing a thing : " + 
+         loadHugeChunkOfContextualInfo().toString + 
+         ", " + moreContextualInfo)
+   anotherThing(2)
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/08_lazyness/5">
+<h1>Lazyness to the rescue</h1>
+
+<pre class="sh_Scala"><code>object Logger {
 
   var logLevel: LogLevel
 
   protected def doLog(msg: String) = {...}
 
   def logDebug(msg:  =&gt;String) = 
-    if(logLevel &gt; LogLevel.Debug)
+    if(logLevel &gt;= LogLevel.Debug)
       doLog(msg())
-}
+}</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="features/09_advanced-features">
+<h1>Hot topics</h1>
 
-// What's wrong with this : 
-logDebug(" : " + loadHugeChunkOfContextualInfo().toString + 
-         ", " + moreContextualInfo)
-// ?</code></pre></div>
+<h2>Scala STM (Software transactional memory)</h2>
+
+<h2>Scala Actors</h2>
+
+<h2>Parallel Collections</h2></div>
 </div><div class="slide" data-transition="none"><div class="content smbullets" ref="conclusion/01_conclusion/1">
+<h1>Is Scala complex ?</h1>
+
+<ul>
+<li>Only as much as you need, for application developpers, it's equivalent to Java.</li>
+<li>Yes For library and DSL design,</li>
+<li>For app development, most of the complexity is hidden behind libraries</li>
+</ul>
+
+
+<!--
+SLIDE smbullets
+# Is Scala mature ?
+
+* The language is mature
+* Libraries & frameworks are getting there
+-->
+</div>
+</div><div class="slide" data-transition="none"><div class="content smbullets" ref="conclusion/01_conclusion/2">
 <h1>Who uses Scala ?</h1>
 
-<h2>Linked/In</h2>
+<h2>100000 developers, and growing every day</h2>
 
-<h2>Twitter</h2>
+<br>
 
-<h2>EDF Trading</h2>
 
-<h2>Siemens</h2>
+<h3>Linked/In, Office Depot, Twitter, EDF Trading, Siemens, Xebia, FourSquare, Xerox, CSC,</h3>
 
-<h2>Xebia</h2>
-
-<h2>FourSquare</h2></div>
-</div><div class="slide" data-transition="none"><div class="content smbullets" ref="conclusion/01_conclusion/2">
-<h1>Scala</h1></div>
+<h3>Sony, UBS, Novell, BankSimple, The Guardian</h3></br>
+</div>
 </div>
 </div>
 
