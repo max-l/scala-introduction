@@ -32,7 +32,7 @@
 	  val hello = "Hello"
 	
 	  def world = "World"
-	  
+	  	  
 	  def say(msg: String) = println(msg)
 	  
 	  def main(args: Array[String]) = {
@@ -59,6 +59,29 @@
 #Scala	
     @@@ Scala
 	class Person(var name: String, var age: Int)
+	
+!SLIDE small
+# Local Type Inference
+
+    @@@ Scala
+	
+	trait Fruit
+	class Apple extends Fruit
+	class Orange extends Fruit
+	
+	object LocalTypeInference {
+	  
+	  //No need to declare the return type,
+	  //the compiler "knows" it : 
+	  def orangeOrApple = 
+	    if(flipCoin() == HEAD)
+		  new Apple
+		else
+		  new Orange
+	  
+	  //Optionally it can be declared for readability :
+	  val fruit: Fruit = orangeOrApple
+	}
 	
 !SLIDE small
 # Scala

@@ -184,3 +184,10 @@
 		  "org.scalatest" % "scalatest_2.8.0" % "1.3.1.RC2" % "provided"
 
 	}
+	
+	
+!SLIDE smbullets 
+##Parser Combinators
+### A DSL for creating parsers in the Scala standard library
+
+#### <http://www.codecommit.com/blog/scala/the-magic-behind-parser-combinators/>

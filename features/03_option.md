@@ -19,7 +19,7 @@
 	
 	val p = List(
 	 new Person("Xiao",Some(45)), 
-	 new new Person("Zong", None)
+	 new Person("Zong", None)
 	)
 
 !SLIDE small	
@@ -27,7 +27,7 @@
 	
 	val crowd = List(
 	 new Person("Xiao",Some(45)), 
-	 new new Person("Zong", None)
+	 new Person("Zong", None)
 	)
 	
 	// Will not compile :
@@ -39,7 +39,7 @@
 	crowd.map(_.age.getOrElse(0)).sum
 	
 	//another way to deal with 'unknowns' :
-	crowd.filter(_ != None).map(_.age.get).sum
+	crowd.filter(_.age != None).map(_.age.get).sum
 	
 !SLIDE small	
 
